@@ -37,15 +37,20 @@ func main() {
 				ex, err := os.Executable()
 				args := []string{"-w=" + strconv.Itoa(*width), "-h=" + strconv.Itoa(*height), "-p=" + *proxy, "-d=" + strconv.FormatBool(*debug), u}
 				log.Println(ex, args, err)
-				if err := exec.Command(ex, args...).Start(); err != nil {
-					log.Fatal(err)
-				}
+				go func(){
+	        if err := exec.Command(ex, args...).Run(); err != nil {
+		        log.Fatal(err)
+	        }
+				}()
 			}
 		}
 	}
 }
 
 func webView(u string) {
+	ex, err := os.Executable()
+	args := []string{"-w=" + strconv.Itoa(*width), "-h=" + strconv.Itoa(*height), "-p=" + *proxy, "-d=" + strconv.FormatBool(*debug), u}
+	log.Println(ex, args, err)
 	w := webview.New(*debug)
 	defer w.Destroy()
 	w.SetTitle("I2P WebView")
