@@ -59,7 +59,7 @@ func webView(u string) {
 	w.Navigate(`data:text/html,<html><body>
 	<!--<label for="back">Back</label><input type="button" id="back" name="back" value="Back"> 
 	<label for="next">Next</label><input type="button" id="next" name="next" value="Next">-->
-	<label for="furl">URL:</label><input width="` + strconv.FormatFloat(float64(*width)*.8, 'f', -1, 64) + `px" type="text" id="furl" name="furl">
+	<label for="furl">URL:</label><input width="` + strconv.FormatFloat(float64(*width)*.8, 'f', -1, 64) + `px" type="text" id="furl" name="furl" value="`+u+`">
 	<label for="go">Go</label><input type="button" id="go" name="go" onclick="go()" value="Go">
 	<script type="text/javascript">function go(){
 	  if (document.getElementById('furl').value != "") {
