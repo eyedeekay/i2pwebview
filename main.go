@@ -16,7 +16,6 @@ var (
 	height = flag.Int("h", 600, "height of the window to create the webview in")
 	proxy  = flag.String("p", "127.0.0.1:4444", "I2P HTTP proxy to use when browsing")
 	debug  = flag.Bool("d", false, "Debug mode")
-	urls   = 0
 )
 
 func main() {
@@ -41,7 +40,6 @@ func main() {
 				if err := exec.Command(ex, args...).Start(); err != nil {
 					log.Fatal(err)
 				}
-				urls++
 			}
 		}
 	}
@@ -56,6 +54,3 @@ func webView(u string) {
 	w.Run()
 }
 
-func decrement() {
-	urls--
-}
