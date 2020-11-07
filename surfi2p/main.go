@@ -53,7 +53,7 @@ func webView(u string) {
 	log.Println(ex, args, err)
 	w := webview.New(*debug)
 	defer w.Destroy()
-	w.SetTitle("I2P WebView")
+	w.SetTitle("I2P Surf")
 	w.SetSize(*width, *height, webview.HintNone)
 	w.Navigate(u)
 	w.Run()
