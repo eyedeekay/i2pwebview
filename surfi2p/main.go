@@ -205,6 +205,10 @@ func webView(u string) {
 		padding: 6px;
 		margin: 2px;
 	}
+	.navbar {
+		width: 30%;
+		min-width: 30%;
+	}
 	</style>
 	<script type="text/javascript">
 	` + goToAddress() + `
