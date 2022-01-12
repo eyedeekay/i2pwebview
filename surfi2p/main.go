@@ -127,12 +127,10 @@ func goToAddress() string {
 	//setInterval(updateStatus, 1000);
 	//setInterval(updateTunnels, 1000);
 	window.onload = function(e) {
-		console.log("Document loaded"); 
 		var input = document.getElementById("furl");
 		input.addEventListener("keyup", function(event) {
-			console.log("Key pressed")
 			if (event.keyCode === 13) {
-				console.log("Enter pressed");
+				console.log("Going to a URL");
 				event.preventDefault();
 				document.getElementById("go").click();
 			}
@@ -206,20 +204,20 @@ func webView(u string) {
 		margin: 2px;
 	}
 	.navbar {
-		width: 30%;
 		min-width: 30%;
 	}
 	</style>
 	<script type="text/javascript">
 	` + goToAddress() + `
 	</script>
+	<div class="tabbar">
 	<label class="mini padded" for="back">Back
 		<input type="button" id="back" name="back" value="Back" onclick="goBack()">
 	</label>
 	<label class="mini padded" for="next">Next
 		<input type="button" id="next" name="next" value="Next" onclick="goForward()">
 	</label>
-	<label for="furl">URL:
+	<label class="navbar" for="furl">URL:
 		<input width="` + strconv.FormatFloat(float64(*width)*.8, 'f', -1, 64) + `px" type="text" id="furl" name="furl" value="` + u + `">
 	</label>
 	<!--<label for="go">Go</label>-->
@@ -233,6 +231,7 @@ func webView(u string) {
 	<label class="mini" for="participating">Participating Tunnels:
 		<span class="mini" id="participatingCount">Participating Tunnels</span>
 	</label>
+	</div>
 	<div class="tabbar">}}
 		<span class="tabgroup"></span>
 	</div>
