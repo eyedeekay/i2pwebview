@@ -81,6 +81,8 @@ func goToAddress() string {
 			}
 			if (!history.includes(url))
 				history = [url, ...history];
+			furl = document.getElementById("furl");
+			furl.innerText = url;
 			document.getElementById('htmlview').src = url;
 			console.log("History:", history, index)
 		}
