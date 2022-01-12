@@ -126,10 +126,11 @@ func goToAddress() string {
 	//setInterval(updatenetworkStatus, 1000);
 	//setInterval(updateStatus, 1000);
 	//setInterval(updateTunnels, 1000);
-	window.document.onload = function(e) {
+	window.onload = function(e) {
 		console.log("Document loaded"); 
 		var input = document.getElementById("furl");
 		input.addEventListener("keyup", function(event) {
+			console.log("Key pressed")
 			if (event.keyCode === 13) {
 				console.log("Enter pressed");
 				event.preventDefault();
