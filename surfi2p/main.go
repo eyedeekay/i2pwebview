@@ -42,11 +42,16 @@ func proxyLoop() bool {
 
 func main() {
 	flag.Parse()
-	if proxyTest() {
+	if !proxyTest() {
 		closer := i2pd.InitI2PSAM()
 		defer closer()
 		i2pd.StartI2P()
 		defer i2pd.StopI2P()
+		*routerconsole = "127.0.0.1:7070"
+	}
+	log.Println("Waiting for proxy to come up")
+	if proxyLoop() {
+		log.Println("Proxy is up")
 	}
 	os.Setenv("http_proxy", "http://"+*proxy)
 	os.Setenv("https_proxy", "http://"+*proxy)
@@ -60,7 +65,10 @@ func main() {
 	os.Setenv("NO_PROXY", "http://"+*routerconsole)
 	log.Println("Proxy set for:", *proxy)
 	log.Println("Router console set for:", *routerconsole)
-	if len(flag.Args()) == 1 {
+	if len(flag.Args()) == 0 {
+		log.Println("Opening default page")
+		webView("http://" + *routerconsole)
+	} else if len(flag.Args()) == 1 {
 		log.Println("Opening single page")
 		webView(flag.Args()[0])
 	} else {
