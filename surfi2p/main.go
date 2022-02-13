@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"net"
 	"net/url"
 	"os"
 	"os/exec"
@@ -10,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/eyedeekay/go-i2pcontrol"
+	i2pd "github.com/eyedeekay/go-i2pd/goi2pd"
 	"github.com/webview/webview"
 )
 
@@ -21,8 +23,31 @@ var (
 	debug         = flag.Bool("d", true, "Debug mode")
 )
 
+func proxyTest() bool {
+	_, err := net.Listen("tcp", *proxy)
+	if err != nil {
+		// proxy is up
+		return true
+	}
+	return false
+}
+
+func proxyLoop() bool {
+	for {
+		if proxyTest() {
+			return true
+		}
+	}
+}
+
 func main() {
 	flag.Parse()
+	if proxyTest() {
+		closer := i2pd.InitI2PSAM()
+		defer closer()
+		i2pd.StartI2P()
+		defer i2pd.StopI2P()
+	}
 	os.Setenv("http_proxy", "http://"+*proxy)
 	os.Setenv("https_proxy", "http://"+*proxy)
 	os.Setenv("ftp_proxy", "http://"+*proxy)
