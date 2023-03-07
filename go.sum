@@ -1,5 +1,6 @@
 github.com/eyedeekay/go-i2pcontrol v0.0.0-20201227222421-6e9f31a29a91 h1:GjdUYLGSC4SBTKuuQ3K3+iLbFihCpBIO8VRjF7GNEYw=
 github.com/eyedeekay/go-i2pcontrol v0.0.0-20201227222421-6e9f31a29a91/go.mod h1:bhIQsVpbNNXMtcoZ9UF4hLQleOjaCgKGXiRRhNc8TOA=
+github.com/eyedeekay/i2pd v0.3.0-1stbinrelease.0.20210702172028-5d01ee95810a/go.mod h1:4qJhWn+yNrWRbqFHhU8kl7JgbcW1hm3PMgvlPlxO3gg=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
